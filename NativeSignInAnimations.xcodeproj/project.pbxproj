@@ -14,6 +14,7 @@
 		53BE341C2A4AF180008C7397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53BE341B2A4AF180008C7397 /* Assets.xcassets */; };
 		53BE341F2A4AF180008C7397 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53BE341D2A4AF180008C7397 /* LaunchScreen.storyboard */; };
 		53BE34272A4AF1D5008C7397 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53BE34262A4AF1D5008C7397 /* Storyboard.storyboard */; };
+		53BE342B2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE342A2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		53BE341E2A4AF180008C7397 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53BE34202A4AF180008C7397 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53BE34262A4AF1D5008C7397 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		53BE342A2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPlaceholderTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				53BE34122A4AF17F008C7397 /* AppDelegate.swift */,
 				53BE34142A4AF17F008C7397 /* SceneDelegate.swift */,
 				53BE34162A4AF17F008C7397 /* ViewController.swift */,
+				53BE342A2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift */,
 				53BE34262A4AF1D5008C7397 /* Storyboard.storyboard */,
 				53BE34182A4AF17F008C7397 /* Main.storyboard */,
 				53BE341B2A4AF180008C7397 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53BE342B2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift in Sources */,
 				53BE34172A4AF17F008C7397 /* ViewController.swift in Sources */,
 				53BE34132A4AF17F008C7397 /* AppDelegate.swift in Sources */,
 				53BE34152A4AF17F008C7397 /* SceneDelegate.swift in Sources */,
@@ -304,7 +308,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,7 +341,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
