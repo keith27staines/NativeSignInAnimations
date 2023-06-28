@@ -35,11 +35,14 @@ class AnimatedServiceView: UIStackView {
     func loadServiceImages() {
         for service in Service.allCases {
             guard let service = Service(rawValue: service.rawValue),
-                  let serviceImage = getServiceImageDataAsset(for: service),
-                  let serviceImageView = arrangedSubviews[service.rawValue] as? UIImageView else { continue }
-            
-            serviceImageView.image = UIImage.gifImageWithData(serviceImage.data)
+                  let gifData = getServiceImageDataAsset(for: service)?.data,
+                  let serviceImageView = arrangedSubviews[service.rawValue] as? UIImageView
+            else { continue }
+            let animationImages = UIImage.imagesFromGIFData(gifData)
+            serviceImageView.animationImages = animationImages
             serviceImageView.animationRepeatCount = 1
+            serviceImageView.startAnimating()
+            serviceImageView.image = animationImages.last
         }
     }
 }
