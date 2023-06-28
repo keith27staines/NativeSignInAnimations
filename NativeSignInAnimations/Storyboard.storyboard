@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22113.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22089.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,40 +13,27 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="MainStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="ViewController" customModule="NativeSignInAnimations" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="c5S-ut-jT7">
-                                <rect key="frame" x="16" y="75" width="362.66666666666669" height="727"/>
+                                <rect key="frame" x="16" y="75" width="361" height="727"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vy1-gi-MjU">
-                                        <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="20.333333333333332"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eraser.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JyS-et-Pf5">
-                                                <rect key="frame" x="0.0" y="0.66666666666666607" width="90.666666666666671" height="19"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eraser.fill" catalog="system" id="8eM-JF-P3T">
-                                                <rect key="frame" x="90.666666666666657" y="0.66666666666666607" width="90.666666666666657" height="19"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eraser.fill" catalog="system" id="pIG-Ex-Xqz">
-                                                <rect key="frame" x="181.33333333333334" y="0.66666666666666607" width="90.666666666666657" height="19"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eraser.fill" catalog="system" id="FEi-e3-ClE">
-                                                <rect key="frame" x="272" y="0.66666666666666607" width="90.666666666666686" height="19"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
-                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTZ-pJ-99T" customClass="AnimatedServiceView" customModule="NativeSignInAnimations" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="55"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="Zeo-SM-gDN"/>
+                                        </constraints>
+                                    </view>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zT-g1-kil" customClass="AnimatedPlaceholderTextField" customModule="NativeSignInAnimations" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56.333333333333343" width="362.66666666666669" height="34"/>
+                                        <rect key="frame" x="0.0" y="91" width="361" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eno-ld-vbk">
-                                        <rect key="frame" x="0.0" y="126.33333333333333" width="362.66666666666669" height="34.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="161" width="361" height="480"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Animate"/>
                                         <connections>
@@ -54,7 +41,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMm-6l-wVg">
-                                        <rect key="frame" x="0.0" y="196.66666666666669" width="362.66666666666669" height="530.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="677" width="361" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -70,11 +57,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animatedServiceView" destination="bTZ-pJ-99T" id="BzQ-qV-4K7"/>
                         <outlet property="textField" destination="0zT-g1-kil" id="And-RB-gGn"/>
-                        <outletCollection property="imageCollection" destination="JyS-et-Pf5" collectionClass="NSMutableArray" id="dcM-o5-BLO"/>
-                        <outletCollection property="imageCollection" destination="8eM-JF-P3T" collectionClass="NSMutableArray" id="dFP-Kc-csS"/>
-                        <outletCollection property="imageCollection" destination="pIG-Ex-Xqz" collectionClass="NSMutableArray" id="CvG-cE-ZuF"/>
-                        <outletCollection property="imageCollection" destination="FEi-e3-ClE" collectionClass="NSMutableArray" id="kNi-tU-i8b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -83,7 +67,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eraser.fill" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

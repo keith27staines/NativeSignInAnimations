@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var textField: AnimatedPlaceholderTextField!
-    @IBOutlet var imageCollection: [UIImageView]!
+    @IBOutlet var animatedServiceView: AnimatedServiceView!
     
     @IBAction func didTapAnimate(_ sender: Any) {
         textField.resignFirstResponder()
@@ -23,7 +23,9 @@ class ViewController: UIViewController {
         textField.delegate = self
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        animatedServiceView.loadServiceImages()
+    }
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -33,4 +35,3 @@ extension ViewController: UITextFieldDelegate {
         animatedField.animatePlaceholder()
     }
 }
-

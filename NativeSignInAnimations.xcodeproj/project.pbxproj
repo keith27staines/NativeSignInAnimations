@@ -15,6 +15,8 @@
 		53BE341F2A4AF180008C7397 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53BE341D2A4AF180008C7397 /* LaunchScreen.storyboard */; };
 		53BE34272A4AF1D5008C7397 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53BE34262A4AF1D5008C7397 /* Storyboard.storyboard */; };
 		53BE342B2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE342A2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift */; };
+		6F6AA07B2A4C377500830951 /* UIImage-AnimatedGIFLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AA07A2A4C377500830951 /* UIImage-AnimatedGIFLoader.swift */; };
+		6F6AA07D2A4C671C00830951 /* AnimatedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AA07C2A4C671C00830951 /* AnimatedServiceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		53BE34202A4AF180008C7397 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53BE34262A4AF1D5008C7397 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		53BE342A2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPlaceholderTextField.swift; sourceTree = "<group>"; };
+		6F6AA07A2A4C377500830951 /* UIImage-AnimatedGIFLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-AnimatedGIFLoader.swift"; sourceTree = "<group>"; };
+		6F6AA07C2A4C671C00830951 /* AnimatedServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedServiceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +67,24 @@
 				53BE34122A4AF17F008C7397 /* AppDelegate.swift */,
 				53BE34142A4AF17F008C7397 /* SceneDelegate.swift */,
 				53BE34162A4AF17F008C7397 /* ViewController.swift */,
-				53BE342A2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift */,
 				53BE34262A4AF1D5008C7397 /* Storyboard.storyboard */,
 				53BE34182A4AF17F008C7397 /* Main.storyboard */,
 				53BE341B2A4AF180008C7397 /* Assets.xcassets */,
 				53BE341D2A4AF180008C7397 /* LaunchScreen.storyboard */,
 				53BE34202A4AF180008C7397 /* Info.plist */,
+				6F6AA0802A4C685200830951 /* Exportable */,
 			);
 			path = NativeSignInAnimations;
+			sourceTree = "<group>";
+		};
+		6F6AA0802A4C685200830951 /* Exportable */ = {
+			isa = PBXGroup;
+			children = (
+				6F6AA07A2A4C377500830951 /* UIImage-AnimatedGIFLoader.swift */,
+				6F6AA07C2A4C671C00830951 /* AnimatedServiceView.swift */,
+				53BE342A2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift */,
+			);
+			path = Exportable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +162,9 @@
 				53BE342B2A4AF5A6008C7397 /* AnimatedPlaceholderTextField.swift in Sources */,
 				53BE34172A4AF17F008C7397 /* ViewController.swift in Sources */,
 				53BE34132A4AF17F008C7397 /* AppDelegate.swift in Sources */,
+				6F6AA07D2A4C671C00830951 /* AnimatedServiceView.swift in Sources */,
 				53BE34152A4AF17F008C7397 /* SceneDelegate.swift in Sources */,
+				6F6AA07B2A4C377500830951 /* UIImage-AnimatedGIFLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
