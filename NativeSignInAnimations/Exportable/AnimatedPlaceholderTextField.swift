@@ -16,12 +16,27 @@ final class AnimatedPlaceholderTextField: UITextField {
     let xOffset: CGFloat = 30
     private var unscaledPlaceholderFontSize: CGFloat = 20
     
+    
+    
     lazy var placeholderLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: unscaledPlaceholderFontSize)
         return label
     }()
+    
+    lazy var underlineView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    var underlineState: UnderlineStates {
+        didSet {
+            underlineView.backgroundColor = underlineState.color
+            underlineViewHeightConstraint.constant = underlineState.height
+        }
+    }
     
     lazy var placeholderCenterYConstraint: NSLayoutConstraint = {
         placeholderLabel
@@ -39,6 +54,38 @@ final class AnimatedPlaceholderTextField: UITextField {
                 equalTo: leadingAnchor,
                 constant: xOffset
             )
+    }()
+    
+    lazy var underlineViewYConstraint: NSLayoutConstraint = {
+        underlineView
+            .topAnchor
+            .constraint(
+                equalTo: self.bottomAnchor,
+                constant: 5
+            )
+    }()
+    
+    lazy var underlineViewLeadingConstraint: NSLayoutConstraint = {
+        underlineView
+            .leadingAnchor
+            .constraint(
+                equalTo: self.leadingAnchor,
+                constant: 0
+            )
+    }()
+    
+    lazy var underlineViewTrailingConstraint: NSLayoutConstraint = {
+        underlineView
+            .trailingAnchor
+            .constraint(
+                equalTo: self.trailingAnchor,
+                constant: 0
+            )
+    }()
+    
+    lazy var underlineViewHeightConstraint: NSLayoutConstraint = {
+        underlineView
+            .heightAnchor.constraint(equalToConstant: 1)
     }()
     
     override var font: UIFont? {
@@ -79,9 +126,6 @@ final class AnimatedPlaceholderTextField: UITextField {
         placeholderLeadingConstraint.constant = isFirstResponder
         ? 0 : xOffset
         
-        let scale = isFirstResponder ? scaleFraction : 1
-        let scaledSize = scale * unscaledPlaceholderFontSize
-        
         UIView.animate(
             withDuration: duration) { [weak self] in
                 guard let self = self else { return }
@@ -93,28 +137,58 @@ final class AnimatedPlaceholderTextField: UITextField {
     }
     
     fileprivate func initialSetup() {
-        borderStyle = .roundedRect
         addSubview(placeholderLabel)
+        addSubview(underlineView)
         
         NSLayoutConstraint.activate(
-            [placeholderCenterYConstraint, placeholderLeadingConstraint]
+            [placeholderCenterYConstraint,
+             placeholderLeadingConstraint,
+             underlineViewYConstraint,
+             underlineViewLeadingConstraint,
+             underlineViewTrailingConstraint,
+             underlineViewHeightConstraint
+            ]
         )
     }
     
     init(placeholderText: String? = nil) {
         self.placeholderText = placeholderText
+        underlineState = .plain
         super.init(frame: CGRect.zero)
         initialSetup()
     }
     
     required init?(coder: NSCoder) {
         self.placeholderText = ""
+        underlineState = .plain
         super.init(frame: CGRect.zero)
         initialSetup()
     }
+}
+
+extension AnimatedPlaceholderTextField {
     
-    
-    
-    
-    
+    enum UnderlineStates {
+        case error
+        case focused
+        case plain
+        
+        var height: CGFloat {
+            switch self {
+            case .error, .focused:
+                return 4
+            case .plain:
+                return 1
+            }
+        }
+        
+        var color: UIColor {
+            switch self {
+            case .error:
+                return .red
+            case .focused, .plain:
+                return .black
+            }
+        }
+    }
 }

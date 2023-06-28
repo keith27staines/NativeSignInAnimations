@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     @IBAction func didTapAnimate(_ sender: Any) {
         textField.resignFirstResponder()
+        textField.underlineState = .error
         textField.animatePlaceholder()
     }
     
@@ -21,10 +22,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         textField.placeholder = "Test Placeholder"
         textField.delegate = self
+        textField.underlineState = .plain
+        animatedServiceView.loadServiceImages()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        animatedServiceView.loadServiceImages()
+        
     }
 }
 
@@ -32,6 +35,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         guard let animatedField = textField as? AnimatedPlaceholderTextField
         else { return }
+        animatedField.underlineState = .focused
         animatedField.animatePlaceholder()
     }
 }

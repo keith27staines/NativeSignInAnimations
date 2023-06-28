@@ -18,6 +18,10 @@ class AnimatedServiceView: UIStackView {
         case bitesize
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        loadServiceImages()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setServiceImagesStackView()
@@ -35,6 +39,7 @@ class AnimatedServiceView: UIStackView {
                   let serviceImageView = arrangedSubviews[service.rawValue] as? UIImageView else { continue }
             
             serviceImageView.image = UIImage.gifImageWithData(serviceImage.data)
+            serviceImageView.animationRepeatCount = 1
         }
     }
 }
