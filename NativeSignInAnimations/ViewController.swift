@@ -29,25 +29,32 @@ class ViewController: UIViewController {
     }
     
     @objc func keyboardWillChangeFrame(_ notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let endFrameY = endFrame?.origin.y ?? 0
-            let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
-            let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
-            let textFieldWindowRect = scrollView.convert(textField.frame, to: .none)
-            if endFrameY >= textFieldWindowRect.maxY {
-                scrollView.contentOffset.y = 0
-            } else {
-                scrollView.contentOffset.y -= (endFrameY - textFieldWindowRect.maxY - (textFieldWindowRect.height + 30))
-            }
-            UIView.animate(withDuration: duration,
-                           delay: TimeInterval(0),
-                           options: animationCurve,
-                           animations: { self.view.layoutIfNeeded() },
-                           completion: nil)
+        guard let userInfo = notification.userInfo else { return }
+        let buffer = CGFloat(100)
+        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        let keyboardTop = (keyboardFrame?.origin.y ?? 0 ) - buffer
+        let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+        let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+        let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+        let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
+        let textFieldWindowRect = scrollView.convert(textField.frame, to: nil)
+        let textFieldBottom = textFieldWindowRect.maxY
+        
+        let keyboardDoesCoverTextField = textFieldBottom > keyboardTop
+
+        if keyboardDoesCoverTextField {
+            let overlap = textFieldBottom - keyboardTop
+            scrollView.contentOffset.y = overlap
+        } else {
+            scrollView.contentOffset.y = 0
         }
+
+        UIView.animate(withDuration: duration,
+                       delay: TimeInterval(0),
+                       options: animationCurve,
+                       animations: { self.view.layoutIfNeeded() },
+                       completion: nil)
+        
     }
 }
 
