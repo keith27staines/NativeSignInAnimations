@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var textField: AnimatedPlaceholderTextField!
     @IBOutlet var animatedServiceView: AnimatedServiceView!
+    @IBOutlet var scrollView: UIScrollView!
     
     @IBAction func didTapAnimate(_ sender: Any) {
         textField.resignFirstResponder()
@@ -24,11 +25,29 @@ class ViewController: UIViewController {
         textField.delegate = self
         textField.underlineState = .plain
         animatedServiceView.loadServiceImages()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
+    @objc func keyboardWillChangeFrame(_ notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame?.origin.y ?? 0
+            let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            let textFieldWindowRect = scrollView.convert(textField.frame, to: .none)
+            if endFrameY >= textFieldWindowRect.maxY {
+                scrollView.contentOffset.y = 0
+            } else {
+                scrollView.contentOffset.y -= (endFrameY - textFieldWindowRect.maxY - (textFieldWindowRect.height + 30))
+            }
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
     }
 }
 

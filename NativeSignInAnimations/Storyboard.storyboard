@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="c5S-ut-jT7">
-                                        <rect key="frame" x="10" y="20" width="373" height="712.66666666666663"/>
+                                        <rect key="frame" x="10" y="20" width="373" height="543"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTZ-pJ-99T" customClass="AnimatedServiceView" customModule="NativeSignInAnimations" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="55"/>
@@ -31,14 +31,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMm-6l-wVg">
-                                                <rect key="frame" x="0.0" y="91.000000000000028" width="373" height="469.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="91" width="373" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="469.67000000000002" id="rTl-CG-Ug9"/>
+                                                    <constraint firstAttribute="height" constant="300" id="rTl-CG-Ug9"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zT-g1-kil" customClass="AnimatedPlaceholderTextField" customModule="NativeSignInAnimations" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="596.66666666666663" width="373" height="35"/>
+                                                <rect key="frame" x="0.0" y="427" width="373" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="z0x-NP-o6h"/>
                                                 </constraints>
@@ -46,7 +46,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eno-ld-vbk">
-                                                <rect key="frame" x="0.0" y="667.66666666666663" width="373" height="45"/>
+                                                <rect key="frame" x="0.0" y="498" width="373" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="ltx-Rm-Clk"/>
                                                 </constraints>
@@ -81,6 +81,7 @@
                     </view>
                     <connections>
                         <outlet property="animatedServiceView" destination="bTZ-pJ-99T" id="BzQ-qV-4K7"/>
+                        <outlet property="scrollView" destination="ETy-Ji-PHd" id="6qM-lk-2CD"/>
                         <outlet property="textField" destination="0zT-g1-kil" id="And-RB-gGn"/>
                     </connections>
                 </viewController>
