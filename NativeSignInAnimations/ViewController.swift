@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         textField.delegate = self
         textField.underlineState = .plain
         animatedServiceView.loadServiceImages()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
