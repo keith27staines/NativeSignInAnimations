@@ -15,6 +15,7 @@ final class AnimatedPlaceholderTextField: UITextField {
     private var yOffset: CGFloat = 0
     let xOffset: CGFloat = 0
     private var unscaledPlaceholderFontSize: CGFloat = 20
+    let translationFix = CGFloat(-5) //Found by trial and error
     
     lazy var placeholderLabel: UILabel = {
         let label = UILabel()
@@ -104,7 +105,7 @@ final class AnimatedPlaceholderTextField: UITextField {
     }
     
     private var scaleTransformWhenIsFirstResponder: CGAffineTransform {
-        CGAffineTransform(translationX: -5, y: -5).scaledBy(x: scaleFraction, y: scaleFraction)
+        CGAffineTransform(translationX: translationFix, y: translationFix).scaledBy(x: scaleFraction, y: scaleFraction)
     }
 
     
