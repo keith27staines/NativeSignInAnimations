@@ -32,6 +32,11 @@ class AnimatedServiceView: UIStackView {
         setServiceImagesStackView()
     }
     
+    private lazy var heightConstraint: NSLayoutConstraint = {
+        let constraint = self.heightAnchor.constraint(equalToConstant: 40)
+        return constraint
+    }()
+    
     func loadServiceImages() {
         for service in Service.allCases {
             guard let service = Service(rawValue: service.rawValue),
@@ -50,10 +55,12 @@ class AnimatedServiceView: UIStackView {
 extension AnimatedServiceView {
     
     fileprivate func setServiceImagesStackView() {
+        heightConstraint.isActive = true
         axis = .horizontal
         distribution = .fillEqually
         Service.allCases.forEach { service in
             let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
             addArrangedSubview(imageView)
         }
     }

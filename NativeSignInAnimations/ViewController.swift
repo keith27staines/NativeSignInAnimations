@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.placeholder = "Test Placeholder"
+        textField.placeholder = "Password"
         textField.delegate = self
         textField.underlineState = .plain
         animatedServiceView.loadServiceImages()

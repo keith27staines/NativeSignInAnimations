@@ -9,14 +9,12 @@ import UIKit
 
 final class AnimatedPlaceholderTextField: UITextField {
     
-    let scaleFraction = CGFloat(0.7)
+    var scaleFraction = CGFloat(0.85)
     let duration: TimeInterval = 0.3
     private var placeholderText: String?
     private var yOffset: CGFloat = 0
-    let xOffset: CGFloat = 30
+    let xOffset: CGFloat = 0
     private var unscaledPlaceholderFontSize: CGFloat = 20
-    
-    
     
     lazy var placeholderLabel: UILabel = {
         let label = UILabel()
@@ -91,6 +89,8 @@ final class AnimatedPlaceholderTextField: UITextField {
     override var font: UIFont? {
         set {
             super.font = newValue
+            placeholderLabel.font = newValue
+            placeholderLabel.textColor = .gray
             unscaledPlaceholderFontSize = newValue?.pointSize ?? 20
         }
         
@@ -104,7 +104,7 @@ final class AnimatedPlaceholderTextField: UITextField {
     }
     
     private var scaleTransformWhenIsFirstResponder: CGAffineTransform {
-        CGAffineTransform.init(scaleX: scaleFraction, y: scaleFraction)
+        CGAffineTransform(translationX: -5, y: -5).scaledBy(x: scaleFraction, y: scaleFraction)
     }
 
     
@@ -123,20 +123,18 @@ final class AnimatedPlaceholderTextField: UITextField {
         placeholderCenterYConstraint.constant = isFirstResponder
         ? -self.bounds.height : 0
         
-        placeholderLeadingConstraint.constant = isFirstResponder
-        ? 0 : xOffset
-        
         UIView.animate(
             withDuration: duration) { [weak self] in
                 guard let self = self else { return }
+                self.placeholderLabel.transform = self.scaleTransform
                 layoutIfNeeded()
-                placeholderLabel.transform = scaleTransform
             } completion: { didFinish in
                 completion?(didFinish)
             }
     }
     
     fileprivate func initialSetup() {
+        placeholderLabel.font = UIFont.systemFont(ofSize: 20)
         addSubview(placeholderLabel)
         addSubview(underlineView)
         
@@ -176,9 +174,9 @@ extension AnimatedPlaceholderTextField {
         var height: CGFloat {
             switch self {
             case .error, .focused:
-                return 4
+                return 3
             case .plain:
-                return 1
+                return 1.2
             }
         }
         
@@ -190,5 +188,26 @@ extension AnimatedPlaceholderTextField {
                 return .black
             }
         }
+    }
+}
+
+extension UIView {
+    func setAnchorPoint(_ point: CGPoint) {
+        var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
+        var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y)
+        
+        newPoint = newPoint.applying(transform)
+        oldPoint = oldPoint.applying(transform)
+        
+        var position = layer.position
+        
+        position.x -= oldPoint.x
+        position.x += newPoint.x
+        
+        position.y -= oldPoint.y
+        position.y += newPoint.y
+        
+        layer.position = position
+        layer.anchorPoint = point
     }
 }
